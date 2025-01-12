@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B468387C2D346A8400B064AB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B468387B2D346A8400B064AB /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B468383C2D30718300B064AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -28,6 +32,7 @@
 		B468383B2D30718300B064AB /* ZoitomatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZoitomatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46838452D30718300B064AB /* ZoitomatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZoitomatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46838762D34534E00B064AB /* Zoitomat.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Zoitomat.xctestplan; sourceTree = "<group>"; };
+		B468387B2D346A8400B064AB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -76,6 +81,7 @@
 		B468381F2D30718100B064AB = {
 			isa = PBXGroup;
 			children = (
+				B468387B2D346A8400B064AB /* README.md */,
 				B46838762D34534E00B064AB /* Zoitomat.xctestplan */,
 				B468382A2D30718100B064AB /* Zoitomat */,
 				B468383E2D30718300B064AB /* ZoitomatTests */,
@@ -214,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B468387C2D346A8400B064AB /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
