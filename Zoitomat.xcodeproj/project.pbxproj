@@ -27,6 +27,7 @@
 		B46838282D30718100B064AB /* Zoitomat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zoitomat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B468383B2D30718300B064AB /* ZoitomatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZoitomatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46838452D30718300B064AB /* ZoitomatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZoitomatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B46838762D34534E00B064AB /* Zoitomat.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Zoitomat.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +76,7 @@
 		B468381F2D30718100B064AB = {
 			isa = PBXGroup;
 			children = (
+				B46838762D34534E00B064AB /* Zoitomat.xctestplan */,
 				B468382A2D30718100B064AB /* Zoitomat */,
 				B468383E2D30718300B064AB /* ZoitomatTests */,
 				B46838482D30718300B064AB /* ZoitomatUITests */,

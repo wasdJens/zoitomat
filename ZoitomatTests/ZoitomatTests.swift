@@ -10,8 +10,30 @@ import Testing
 
 struct ZoitomatTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test("Start time entry")
+    func startTimeEntry() async throws {
+        var testEntry = TimeEntry(
+            title: "Time Entry Test"
+        )
+        
+        testEntry.startOrResume()
+        
+        #expect(testEntry.state == .running)
+        #expect(testEntry.startedAt != nil)
     }
-
+    
+    @Test("Stop time entry")
+    func stopTimeEntry() async throws {
+        var testEntry = TimeEntry(
+            title: "Time Entry Test"
+        )
+        
+        testEntry.startOrResume()
+        try await Task.sleep(for: .seconds(1))
+        
+        testEntry.stop()
+        
+        #expect(testEntry.state == .stopped)
+        #expect(testEntry.stoppedAt != nil)
+    }
 }

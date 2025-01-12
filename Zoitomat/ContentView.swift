@@ -9,22 +9,32 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @Query private var timeEntries: [TimeEntry]
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    
+    @State private var columnVisibility = NavigationSplitViewVisibility.detailOnly
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationSplitView(columnVisibility: $columnVisibility) {
+            List(timeEntries) { entry in
+                HStack {
+                    Text(entry.title)
+                    TimerView(entry: entry)
+                    switch entry.state {
+                    case .created, .paused, .stopped:
+                        Button("", systemImage: "play.circle") {
+                            entry.startOrResume()
+                        }
+                    case .running:
+                        Button("", systemImage: "pause.circle") {
+                            entry.pause()
+                        }
+                    case .archived:
+                        Text("Not Possible")
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+            .navigationSplitViewColumnWidth(min: 250, ideal: 300)
             .toolbar {
                 ToolbarItem {
                     Button(action: addItem) {
@@ -33,27 +43,20 @@ struct ContentView: View {
                 }
             }
         } detail: {
-            Text("Select an item")
+            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { /*@START_MENU_TOKEN@*/Text("Date")/*@END_MENU_TOKEN@*/ })
         }
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
+            let newItem = TimeEntry(title: "New Item")
             modelContext.insert(newItem)
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: TimeEntry.self, inMemory: true)
 }

@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "CBAB948A-6579-4BAE-94AD-75214EA0B681",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Zoitomat.xcodeproj",
+      "identifier" : "B46838272D30718100B064AB",
+      "name" : "Zoitomat"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Zoitomat.xcodeproj",
+        "identifier" : "B468383A2D30718300B064AB",
+        "name" : "ZoitomatTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Zoitomat.xcodeproj",
+        "identifier" : "B46838442D30718300B064AB",
+        "name" : "ZoitomatUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
