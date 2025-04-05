@@ -17,10 +17,15 @@ enum TimerState: Codable {
 }
 
 @Model
-class TimeEntry: Identifiable {
+class ZoitTimeEntry: Identifiable {
     var id = UUID()
     
-    var title: String
+    /**
+     * Data Model Properties
+     */
+    
+    // The actual time entry label something like "Project XY"
+    var label: String
     // Internal state for easily update the UI
     var state: TimerState
     // Date when the entry was created
@@ -32,15 +37,22 @@ class TimeEntry: Identifiable {
     // End date when tracking stopped
     var stoppedAt: Date?
     // Archives the time entry when the user removes it
-    var isRemoved = false
+    var isArchived = false
     // Keep track of the total idle time
     var pauseStartedAt: Date?
     var totalPausedDuration: TimeInterval = 0
     // Time entry final duration
     var duration: TimeInterval = 0
     
-    init(title: String, createdOn: Date = Date(), modifiedOn: Date = Date()) {
-        self.title = title
+    
+    /**
+     * Relationships
+     */
+    @Relationship(inverse: \ZoitProject.timeEntries)
+    var project: ZoitProject?
+    
+    init(label: String, createdOn: Date = Date(), modifiedOn: Date = Date()) {
+        self.label = label
         self.createdOn = createdOn
         self.modifiedOn = modifiedOn
         self.state = TimerState.created
@@ -106,15 +118,14 @@ class TimeEntry: Identifiable {
         state = .paused
     }
     
-    func delete() {
+    func archive() {
         guard state == .running || state == .paused else {
             zoity.error("Can not delete a running time entry")
             return
         }
 
-        
         modifiedOn = Date()
-        isRemoved = true
+        isArchived = true
         state = .archived
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerView: View {
-    @Bindable var entry: TimeEntry
+    @Bindable var entry: ZoitTimeEntry
     
     @State private var display = "00:00"
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -40,5 +40,5 @@ struct TimerView: View {
 }
 
 #Preview {
-    TimerView(entry: TimeEntry(title: "Test"))
+    TimerView(entry: ZoitTimeEntry(label: "Test"))
 }

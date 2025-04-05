@@ -12,7 +12,7 @@ import SwiftData
 struct ZoitomatApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            TimeEntry.self,
+            ZoitTimeEntry.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

@@ -12,7 +12,7 @@ struct ZoitomatTests {
 
     @Test("Start time entry")
     func startTimeEntry() async throws {
-        var testEntry = TimeEntry(
+        var testEntry = ZoitTimeEntry(
             title: "Time Entry Test"
         )
         
@@ -24,7 +24,7 @@ struct ZoitomatTests {
     
     @Test("Stop time entry")
     func stopTimeEntry() async throws {
-        var testEntry = TimeEntry(
+        var testEntry = ZoitTimeEntry(
             title: "Time Entry Test"
         )
         
